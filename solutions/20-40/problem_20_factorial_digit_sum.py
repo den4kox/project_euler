@@ -15,4 +15,4 @@ def solution(x=None):
 
 solution(100)
 
-## result: 648. Time: 0.0009765625
+## result: 648. Time: 0.0
