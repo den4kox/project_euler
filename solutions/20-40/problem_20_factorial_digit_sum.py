@@ -1,13 +1,18 @@
 """n! means n × (n − 1) × ... × 3 × 2 × 1
 For example, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800,and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
 Find the sum of the digits in the number 100!"""
+from functools import reduce
+
 from decorators_k import writeResult
 import sys
 sys.path.insert(0, "..")
 
 
 @writeResult
-def solution(x = None):
-    pass
+def solution(x=None):
+    
+    return reduce(lambda a, i: a + int(i), str(reduce(lambda a, i: a*i, range(1, x+1))), 0)
 
-solution()
+solution(100)
+
+## result: 648. Time: 0.0009765625
