@@ -10,7 +10,6 @@ sys.path.insert(0, "..")
 def solution(x=None):
     return reduce(lambda a, b: a + b, sorted(list(set(list(range(0, x, 5)) + list(range(0, x, 3))))), 0)
 
-
 solution(1000)
 
 ## result: 233168. Time: 0.0
