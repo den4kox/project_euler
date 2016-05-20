@@ -15,24 +15,28 @@ sys.path.insert(0, "..")
 
 @writeResult
 def solution(x = None):
-    count = 0
+    all_year = []
     for y in range(1900 ,2001):
-        if (y % 4 == 0 and y % 100 != 0) or y % 400 == 0:
-            print("Высокосный: ", y,"y % 400 = ",y % 400)
-            year = [list(range(1, 32)),
-                    list(range(1, 30)),
-                    list(range(1, 32)),
-                    list(range(1, 31)),
-                    list(range(1, 32)),
-                    list(range(1, 31)),
-                    list(range(1, 32)),
-                    list(range(1, 32)),
-                    list(range(1, 31)),
-                    list(range(1, 32)),
-                    list(range(1, 31)),
-                    list(range(1, 32)),]
-            print(year)
-            return 1
+        year = [list(range(1, 32)),
+                list(range(1, 30)) if (y % 4 == 0 and y % 100 != 0) or y % 400 == 0 else list(range(1, 29)),
+                list(range(1, 32)),
+                list(range(1, 31)),
+                list(range(1, 32)),
+                list(range(1, 31)),
+                list(range(1, 32)),
+                list(range(1, 32)),
+                list(range(1, 31)),
+                list(range(1, 32)),
+                list(range(1, 31)),
+                list(range(1, 32))]
+        all_year.append(year)
+    days = [day for year_item in all_year for days in year_item for day in days]
+    day_sun = days[6::7].count(1)-days[6:365:7].count(1)
+    return day_sun
 solution()
+"""best short solution:
+    sum([1 for month in range(1,13) for year in range(1901,2001) if date(year,month,1).weekday()==6])
+"""
 
-## result: 1. Time: 0.0009927749633789062
+
+## result: 171. Time: 0.0048830509185791016
