@@ -24,4 +24,4 @@ def solution(x = None):
     return sum([alphabetical(x)*(i+1) for i, x in enumerate(sorted(s.replace("\"", "").split(",")))])
 solution(938)
 
-## result: 871198282. Time: 0.015624284744262695
+## result: 871198282. Time: 0.0166013240814209
