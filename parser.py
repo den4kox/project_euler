@@ -20,7 +20,7 @@ def create_files(dict_problem):
             file.write('import sys\nsys.path.insert(0, "..")\n\n')
 
             file.write('\n@writeResult\n')
-            file.write('def solution(x = None):')
+            file.write('def solution(x=None):')
             file.write('\n    pass\n')
             file.write('\n')
             file.write('solution()\n')
