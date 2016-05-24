@@ -35,4 +35,4 @@ def solution(x=None):
 solution(28123)
 
 
-## result: 4179871. Time: 0.745124101638794
+## result: 4179871. Time: 0.7441484928131104
