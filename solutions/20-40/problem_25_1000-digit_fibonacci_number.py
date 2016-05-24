@@ -22,6 +22,10 @@ sys.path.insert(0, "..")
 
 @writeResult
 def solution(x = None):
-    pass
+    list_fib = [1,1,2]
+    while len(str(list_fib[-1])) != x:
+        list_fib.append(list_fib[-1]+list_fib[-2])
+    return len(list_fib)
+solution(1000)
 
-solution()
+## result: 4782. Time: 0.17676019668579102

@@ -37,4 +37,4 @@ def solution(x=None):
 
 solution(lst)
 
-## result: 2783915460. Time: 3.9580538272857666
+## result: 2783915460. Time: 4.046924829483032
