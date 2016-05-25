@@ -57,4 +57,4 @@ def solution(x=None):
 solution(1001)
 
 
-## result: (983, 982). Time: 0.023437023162841797
+## result: (983, 982). Time: 0.0205078125

@@ -9,11 +9,61 @@ n² + an + b, where |a| < 1000 and |b| < 1000where |n| is the modulus/absolute v
 Find the product of the coefficients, a and b, for the quadratic expression that produces the maximum number of primes for consecutive values of n, starting with n = 0."""
 from decorators_k import writeResult
 import sys
+
 sys.path.insert(0, "..")
 
 
-@writeResult
-def solution(x = None):
-    pass
+def isPrime(n):
+    if n == 2 or n == 3:
+        return True
+    if n % 2 == 0 or n < 2:
+        return False
+    for i in range(3, int(n ** 0.5) + 1, 2):  # only odd numbers
+        if n % i == 0:
+            return False
 
-solution()
+
+    return True
+
+
+@writeResult
+def solution(x=None):
+    max_a = 0
+    max_b = 0
+    count_prime = 0
+    list_prime = set()
+    list_no_prime = set()
+
+    for a in range(-x, x):
+        for b in range(-x, x):
+            n = 0
+            while True:
+               
+                res = n ** 2 + a * n + b
+                
+                if res in list_prime:
+                    n += 1
+                    continue
+                elif res in list_no_prime:
+                    break
+                elif isPrime(res):
+
+                    list_prime.add(res)
+
+                    n += 1
+                    continue
+                else:
+                    list_no_prime.add(res)
+                    
+                    break
+            if count_prime < n:
+                count_prime = n
+                max_a = a
+                max_b = b
+
+    return max_a * max_b
+
+
+solution(1000)
+
+## result: -59231. Time: 3.752976179122925
