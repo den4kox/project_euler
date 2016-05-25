@@ -20,45 +20,41 @@ from decimal import getcontext, Decimal
 import sys
 sys.path.insert(0, "..")
 
+
 def remNull(x):
     for i, n in enumerate(x):
         if n != "0":
             return x
         x = x[1:]
 
-def find(s, ch):
-    return [i for i, ltr in enumerate(s) if ltr == ch]
+
+def period(x):
+    i = 0
+    period_ = ""
+    sub_numerator = 10
+    while sub_numerator != 10 or i < 1:
+
+        sub_numerator = (sub_numerator % x) * 10
+        i += 1
+    return i
+
+
+def gnt(x):
+    for i in range(2, x):
+        if i%2 != 0 and i%5 != 0:
+            yield i
 
 @writeResult
 def solution(x=None):
-    getcontext().prec = 5000
-    len_ = 0
-    nubme = 0
-    qwe = ""
-    for n in range(2, x):
-        c = Decimal(1) / Decimal(n)
-
-        text = remNull(str(c)[2:])
-        if len(text) < 11 or len(Counter(text)) < 5 :
-            continue
-        l = len(str(c))-2
-        #print(n, text)
-        for yt in range(0,100):
-            list_index = find(text, text[yt])
-            if len(list_index)<4:
-                continue
-            #print(list_index[1], list_index[0])
-            len_res = list_index[1]-list_index[0]
-            if len_ > len_res:
-                continue
-            #print(text[list_index[0]:])
-            if text[list_index[0]:list_index[0]+900] == text[list_index[1]:list_index[1]+900]:
-
-                qwe = text
-                nubme = n
-                len_ = len_res
-    return (nubme, len_)
+    len_rest = 0
+    num = 0
+    for i in gnt(x):
+        per = period(i)
+        if per > len_rest:
+            len_rest = per
+            num = i
+    return (num ,len_rest)
 solution(1001)
 
 
-## result: (831, 69). Time: 70.13785219192505
+## result: (983, 982). Time: 0.023437023162841797
